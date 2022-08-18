@@ -43,7 +43,7 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if m.Content == "flagz" {
+	if m.Content == "/flagz" {
 		_, _ = s.ChannelMessageSend(m.ChannelID, "test")
 	}
 }
