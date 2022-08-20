@@ -2,20 +2,17 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/slab713/flagz/bot"
-	"github.com/slab713/flagz/config"
 )
 
 func main() {
-	err := config.ReadConfig()
+	err := ReadConfig()
 
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	bot.Start()
+	Start()
 
 	<-make(chan struct{})
 }
