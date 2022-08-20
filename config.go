@@ -9,8 +9,7 @@ import (
 var (
 	Token     string
 	BotPrefix string
-
-	config *configStruct
+	config    *configStruct
 )
 
 type configStruct struct {
