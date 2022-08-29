@@ -47,7 +47,6 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Content == "/flagz" || m.Content == "!flagz" {
 		images, err := os.ReadDir("./images")
 		rand.Shuffle(len(images), func(i, j int) { images[i], images[j] = images[j], images[i] })
-		fmt.Println(images)
 
 		if err != nil {
 			fmt.Println(err.Error())
