@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/patrickmn/go-cache"
 )
@@ -42,9 +44,16 @@ func main() {
 	for i := 0; i < len(files); i++ {
 		imageMap[indices[i]] = files[i]
 	}
-	fmt.Println(imageMap)
 
-	cache.New(cache.NoExpiration, cache.NoExpiration)
+	c := cache.New(-1, -1)
+	c.Add("mapInCache", imageMap, -1)
+	fmt.Println(c.Get("mapInCache"))
+
+	rand.Seed(time.Now().UnixNano())
+	min := 1
+	max := 197
+	randomNr := (rand.Intn(max-min+1) + min)
+	fmt.Println(randomNr)
 
 	ReadConfig()
 

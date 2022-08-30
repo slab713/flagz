@@ -43,7 +43,6 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if m.Content == "/flagz" {
-		// rand.Shuffle(len(images), func(i, j int) { images[i], images[j] = images[j], images[i] })
 		fmt.Println("test")
 	}
 }
