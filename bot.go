@@ -6,18 +6,20 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var botId string
-var goBot *discordgo.Session
+var (
+	botId string
+	s     *discordgo.Session
+)
 
 func Start() {
-	goBot, err := discordgo.New("Bot " + config.Token)
+	s, err := discordgo.New("Bot " + config.Token)
 
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	u, err := goBot.User("@me")
+	u, err := s.User("@me")
 
 	if err != nil {
 		fmt.Println(err.Error())
@@ -26,9 +28,9 @@ func Start() {
 
 	botId = u.ID
 
-	goBot.AddHandler(messageHandler)
+	err = s.Open()
 
-	err = goBot.Open()
+	s.AddHandler(messageHandler)
 
 	if err != nil {
 		fmt.Println(err.Error())
