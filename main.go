@@ -2,42 +2,51 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"os"
-	"time"
+	"path/filepath"
+	"strings"
 
 	"github.com/patrickmn/go-cache"
 )
 
+func walkDir(root string) ([]string, error) {
+	var contents []string
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if !info.IsDir() {
+			contents = append(contents, path)
+		}
+		return nil
+	})
+	return contents, err
+}
+
 func main() {
-	files, err := os.ReadDir("./images")
-	fmt.Println(files)
-	/* 	var num int
-	   	for i := range files {
-	   		num += i
-	   	}
 
-	   	fmt.Println(num)
-
-	   	numc := string(num) */
-
-	imageMap := map[string]cache.Item{}
-
-	cache.NewFrom(cache.NoExpiration, cache.NoExpiration, imageMap)
+	search, err := walkDir("./images")
 
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	err = ReadConfig()
-
-	if err != nil {
-		fmt.Println(err.Error())
-		return
+	var indices []int
+	var files []string
+	for i, el := range search {
+		indices = append(indices, i+1)
+		strings.Fields(el)
+		files = append(files, el)
 	}
 
-	rand.Seed(time.Now().UnixNano())
+	imageMap := make(map[int]string)
+
+	for i := 0; i < len(files); i++ {
+		imageMap[indices[i]] = files[i]
+	}
+	fmt.Println(imageMap)
+
+	cache.New(cache.NoExpiration, cache.NoExpiration)
+
+	ReadConfig()
 
 	Start()
 
