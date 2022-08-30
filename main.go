@@ -11,15 +11,15 @@ import (
 
 func main() {
 	files, err := os.ReadDir("./images")
+	fmt.Println(files)
+	/* 	var num int
+	   	for i := range files {
+	   		num += i
+	   	}
 
-	var num int
-	for i := range files {
-		num += i
-	}
+	   	fmt.Println(num)
 
-	fmt.Println(num)
-
-	// numc := string(num)
+	   	numc := string(num) */
 
 	imageMap := map[string]cache.Item{}
 
