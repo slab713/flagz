@@ -43,7 +43,8 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if m.Content == "/flagz" {
-		fmt.Println("test")
+		num := pickRandomNr()
+		fmt.Println(num)
 	}
 }
 

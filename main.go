@@ -23,6 +23,16 @@ func walkDir(root string) ([]string, error) {
 	return contents, err
 }
 
+const min int = 1
+const max int = 197
+
+// Function for picking a random number between 1 and 197
+func pickRandomNr() int {
+	rand.Seed(time.Now().UnixNano())
+	randomNr := (rand.Intn(max-min+1) + min)
+	return randomNr
+}
+
 func main() {
 
 	// Call walkDir function
@@ -52,13 +62,6 @@ func main() {
 	c := cache.New(-1, -1)
 	c.Add("mapInCache", imageMap, -1)
 	fmt.Println(c.Get("mapInCache"))
-
-	// Stuff for picking a random number
-	rand.Seed(time.Now().UnixNano())
-	min := 1
-	max := 197
-	randomNr := (rand.Intn(max-min+1) + min)
-	fmt.Println(randomNr)
 
 	// Login the bot
 	ReadConfig()
