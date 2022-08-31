@@ -59,7 +59,7 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 4) Inform the player if their answer was wrong or right. Or if better, just post the right answer without checking via the select menu.
 5) Delete the already used image from the map and sleep a few seconds (so the user can read the result)
 6) Pick a new random number (... create another function: pick random number from current len() of the map copy)
-7) Edit the Message, show new image, select menu etc.
+7) Edit the message, show new image, select menu etc.
 8) Repeat until map is empty
 
 */
