@@ -69,6 +69,6 @@ func main() {
 	// Start the bot
 	Start()
 
-	// idk
+	// Keeps the connection going
 	<-make(chan struct{})
 }
