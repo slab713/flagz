@@ -52,6 +52,11 @@ func main() {
 		files = append(files, el)
 	}
 
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
 	// Create a map to match index + file
 	imageMap := make(map[int]string)
 	for i := 0; i < len(files); i++ {
@@ -62,6 +67,11 @@ func main() {
 	c := cache.New(-1, -1)
 	c.Add("mapInCache", imageMap, -1)
 	fmt.Println(c.Get("mapInCache"))
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
 
 	// Login the bot
 	ReadConfig()

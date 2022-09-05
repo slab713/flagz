@@ -36,6 +36,7 @@ func Start() {
 		fmt.Println(err.Error())
 		return
 	}
+
 	fmt.Println("Bot is running!")
 }
 
